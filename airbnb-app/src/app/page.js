@@ -1,15 +1,19 @@
-import Image from "next/image";
+import Image from 'next/image'
 import Head from 'next/head';
 import Header from "../components/Header";
 import Hero from "@/components/Hero";
-// import { InferGetStaticPropsType, GetStaticProps } from 'next'
+import ExploreCards from '@/components/ExploreCards';
 
 
-const Home = async ({ exploreData }) => {
+async function getData() {
+  const res = await fetch('https://www.jsonkeeper.com/b/4G1G', { cache: 'force-cache' });
+  const data = await res.json()
+  return data
+}
 
-  // const staticData = await fetch(`https://...`, { cache: 'force-cache' })
+const Page = async () => {
 
-  // const exploreData = await fetch('https://links.papareact.com/pyp' , { cache: 'force-cache' })
+  const exploreData = await getData()
 
   return (
     <div className="">
@@ -31,8 +35,13 @@ const Home = async ({ exploreData }) => {
         <section className="pt-6">
             <h2 className="text-4xl font-semibold pb-5"> Explore Nearby </h2>
 
-            {exploreData?.map(item => (
-              <h1 key={index}>{item.location}</h1>
+            {exploreData?.map(({img, distance, location}) => (
+              <ExploreCards
+              key={img} 
+              img={img} 
+              distance={distance} 
+              location={location} 
+              />
             ))}
 
         </section>
@@ -48,15 +57,4 @@ const Home = async ({ exploreData }) => {
   );
 }
 
-export default Home
-
-export async function getStaticProps() {
-  // Fetch data from an API
-  const res = await fetch('https://links.papareact.com/pyp');
-  const exploreData = await res.json();
-
-  // Pass data to the page component as props
-  return {
-    props: { exploreData },
-  };
-}
+export default Page
