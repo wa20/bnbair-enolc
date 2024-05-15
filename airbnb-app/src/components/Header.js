@@ -33,37 +33,11 @@ function Header() {
 
   const handleSearch = () => {
     // NextJS 14 - next/navigation cannot pass query params and requeirs a string
-    router.push(`/search/?location=${[searchInput]}?startDate=${startDate.toISOString()}
-      ?endDate=${endDate.toISOString()}?Guests=${numberOfGuests}`)
-
-    // router.push({
-    //   pathname: "/search",
-    //   query: {
-    //     location: searchInput,
-    //     startDate: startDate.toISOString(),
-    //     endDate: endDate.toISOString(),
-    //     numberOfGuests
-    //   },
-    // });
+    router.push(
+      `/search?location=${searchInput}&startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}&guests=${numberOfGuests}`
+    );
   };
 
-
-  // const handleSearch = () => {
-  //   const queryParams = {
-  //     location: searchInput,
-  //     startDate: startDate.toISOString(),
-  //     endDate: endDate.toISOString(),
-  //     numberOfGuests,
-  //   };
-
-  //   router.push({
-  //     pathname: '/search',
-  //     query: queryParams,
-  //   });
-  // };
-
-
-  
   const selectionRange = {
     startDate,
     endDate,
