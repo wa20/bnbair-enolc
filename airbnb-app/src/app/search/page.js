@@ -1,6 +1,6 @@
 
 import React from "react";
-import Search from "@/components/Search";
+import Search from "@/app/search/Search";
 
 async function getData() {
     try {
