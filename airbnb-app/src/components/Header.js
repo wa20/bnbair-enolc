@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import {
   MagnifyingGlassIcon,
   GlobeEuropeAfricaIcon,
@@ -9,7 +8,7 @@ import {
   UserCircleIcon,
   UsersIcon,
 } from "@heroicons/react/24/solid";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
