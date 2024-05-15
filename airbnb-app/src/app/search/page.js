@@ -8,9 +8,27 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation"
 import { useEffect } from "react";
 import { format } from "date-fns"
 
+
+
+
+// async function getData() {
+//     try {
+//       const searchRes = await fetch("https://www.jsonkeeper.com/b/5NPS", {cache: 'no-store'});
+//       const searchResults = await searchRes.json();
+  
+//       return { searchResults };
+      
+//     } catch (error) {
+//       console.error("Error fetching data:", error);
+//       return { searchResults: [], }; // Return empty arrays or appropriate default data
+//     }
+    
+//   }
+
  
-const Search = () => {
+const Search = async ({search}) => {
   const searchParams = useSearchParams();
+  // const { searchResults } = await getData();
 
   // Extracting query parameters
   const location = searchParams.get('location');
@@ -19,6 +37,7 @@ const Search = () => {
   const guests = searchParams.get('guests'); // 'Guests' is case-sensitive
 
   // Returning an object with the extracted parameters
+  
   const searchData = {
     location,
     startDate,
@@ -30,12 +49,21 @@ const Search = () => {
 
 
   const formattedStartDate = format(new Date(startDate), "dd MMMM yy")
-  const formattedEndtDate = format(new Date(startDate), "dd MMMM yy")
+  const formattedEndtDate = format(new Date(endDate), "dd MMMM yy")
   const dateRange = `${formattedStartDate} - ${formattedEndtDate}`
+
+
+
+  
+  // useEffect(() => {
+  //  console.log('search resultsss: ', search)
+  // }, [search])
+  
+ 
 
   return (
     <div>
-      <Header />
+      <Header placeholder={`${location} | ${dateRange} | ${guests} guests`}/>
 
       <main className="flex">
         <section className="flex-grow pt-14 px-6">
