@@ -4,22 +4,22 @@ import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InfoCard from "@/components/InfoCard";
+import Map from "@/components/Map";
 import { useSearchParams } from "next/navigation";
-import { format } from "date-fns"
+import { format } from "date-fns";
 
- 
-const Search = ({search}) => {
+const Search = ({ search }) => {
   const searchParams = useSearchParams();
   // const { searchResults } = await getData();
 
   // Extracting query parameters
-  const location = searchParams.get('location');
-  const startDate = searchParams.get('startDate');
-  const endDate = searchParams.get('endDate');
-  const guests = searchParams.get('guests'); // 'Guests' is case-sensitive
+  const location = searchParams.get("location");
+  const startDate = searchParams.get("startDate");
+  const endDate = searchParams.get("endDate");
+  const guests = searchParams.get("guests"); // 'Guests' is case-sensitive
 
   // Returning an object with the extracted parameters
-  
+
   // const searchData = {
   //   location,
   //   startDate,
@@ -27,17 +27,19 @@ const Search = ({search}) => {
   //   guests,
   // };
 
-  const formattedStartDate = format(new Date(startDate), "dd MMMM yy")
-  const formattedEndtDate = format(new Date(endDate), "dd MMMM yy")
-  const dateRange = `${formattedStartDate} - ${formattedEndtDate}`
+  const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
+  const formattedEndtDate = format(new Date(endDate), "dd MMMM yy");
+  const dateRange = `${formattedStartDate} - ${formattedEndtDate}`;
 
   return (
     <div>
-      <Header placeholder={`${location} | ${dateRange} | ${guests} guests`}/>
+      <Header placeholder={`${location} | ${dateRange} | ${guests} guests`} />
 
       <main className="flex">
         <section className="flex-grow pt-14 px-6">
-          <p className="text-xs">300+ stays | {dateRange} | for {guests} guests </p>
+          <p className="text-xs">
+            300+ stays | {dateRange} | for {guests} guests{" "}
+          </p>
           <h1 className="text-3xl font-semibold mb-6"> Stays in: {location}</h1>
 
           <div className="hidden lg:inline-flex mb-5 space-x-4">
@@ -49,9 +51,9 @@ const Search = ({search}) => {
           </div>
 
           <div className="flex flex-col">
-            {search?.map(item => (
+            {search?.map((item) => (
               <InfoCard
-                key={item.img} 
+                key={item.img}
                 img={item.img}
                 location={item.location}
                 title={item.title}
@@ -62,7 +64,9 @@ const Search = ({search}) => {
               />
             ))}
           </div>
-
+        </section>
+        <section className="hidden xl:inline-flex xl:min-w-[600px]">
+          <Map search={search} />
         </section>
       </main>
       <Footer />
