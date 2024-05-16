@@ -7,7 +7,7 @@ function Hero() {
       <Image
         src="https://links.papareact.com/0fm"
         alt="hero background image"
-        layout="fill"
+        fill
         objectFit="cover"
       />
 

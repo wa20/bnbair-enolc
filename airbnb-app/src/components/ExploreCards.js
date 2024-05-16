@@ -8,7 +8,7 @@ const ExploreCards = ({ img, location, distance }) => {
         <Image
           src={img}
           alt={location}
-          layout="fill"
+          fill
           objectFit="contain"
           className="rounded-lg"
         />

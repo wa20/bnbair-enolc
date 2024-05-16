@@ -8,7 +8,7 @@ const FooterHero = ({ img, title, description, buttonText }) => {
         <Image
           src={img}
           alt='Footer'
-          layout="fill"
+          fill
           objectFit="cover"
           className="rounded-2xl"
         />

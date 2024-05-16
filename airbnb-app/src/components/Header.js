@@ -53,7 +53,7 @@ function Header({placeholder}) {
         <Image
           src="https://links.papareact.com/qd3"
           alt="airbnb Logo"
-          layout="fill"
+          fill
           objectFit="contain"
           objectPosition="left"
         />

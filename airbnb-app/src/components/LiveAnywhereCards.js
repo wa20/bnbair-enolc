@@ -8,7 +8,7 @@ const LiveAnywhereCards = ({ img, title}) => {
         <Image
           src={img}
           alt={title}
-          layout="fill"
+          fill
           objectFit="contain"
           className="rounded-xl"
         />
