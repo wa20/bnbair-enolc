@@ -1,8 +1,15 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": ["next","next/babel", "next/core-web-vitals" ],
   "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "requireConfigFile": false
+    "babelOptions": {
+      "requireConfigFile": false,
+      "presets": ["next/babel"],
+      "caller": {
+        // Eslint supports top level await when a parser for it is included. We enable the parser by default for Babel.
+        "supportsTopLevelAwait": true
+      }
+    }
   },
   "rules": {
     "react/no-unescaped-entities": "off"
